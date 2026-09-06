@@ -72,4 +72,5 @@ def render_trim(pdf, out, pad=12, dpi=300, inset=3):
     im.crop((max(0, l - pad), max(0, t - pad),
              min(W, r + pad), min(H, b + pad))).save(out, optimize=True)
 ```
-| `static/images/vsib_category_bars.png` | `scripts/make_vsib_category_bars.py` (numbers and sources in its docstring; dagger on the GT legend entry) | `bash scripts/make_site_charts.sh` |
+| `static/images/vsib_category_bars.png` | `scripts/make_site_category_bars.py vsib` (numbers and sources in its docstring; dagger on the GT legend entry) | `bash scripts/make_site_charts.sh` |
+| `static/images/revsi_category_bars.png` | `scripts/make_site_category_bars.py revsi` (paper tab:revsi rows verbatim; dagger on the GT legend entry) | `bash scripts/make_site_charts.sh` |

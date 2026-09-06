@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-"""VSIBench per-category bars for the project website (static/images/vsib_category_bars.png).
+"""Per-category bars for the project website: VSIBench (static/images/vsib_category_bars.png)
+and ReVSI (static/images/revsi_category_bars.png). Run with the benchmark key as the argument.
 
 Same family as the poster's VSTIBench category chart
 (agent-project-paper/figure_kit/poster_eccv/make_category_bars.py, v21): three bars per
@@ -17,6 +18,10 @@ appearance cohort, USER sanction 2026-08-24), the same cohort behind the paper's
     easy/medium/hard difficulties, as in the official 8-task macro.
   Check: the 8-task macros reproduce the printed composites 56.8583 / 65.2917 / 88.7833.
 Counting is an oracle ceiling in the GT arm; appearance order uses the 50-question cohort.
+
+ReVSI rows are the paper's ReVSI table (tab:revsi) verbatim: Baseline and SPLIT on the full
+benchmark (32 frames), SPLIT + GT on the 981-question analysis subset that excludes 18 route
+questions without complete annotations; counting is an oracle ceiling. Means reproduce 63.8 / 71.5 / 91.0.
 """
 import os
 import numpy as np
@@ -29,28 +34,47 @@ plt.rcParams["font.sans-serif"] = ["Arial", "Nimbus Sans", "Liberation Sans", "D
 plt.rcParams["axes.unicode_minus"] = False
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(HERE, "..", "static", "images", "vsib_category_bars.png")
+OUT_DIR = os.path.join(HERE, "..", "static", "images")
 GT_MARK = os.environ.get("CHART_GT_MARK", "†")   # dagger on the GT legend entry, footnoted on the page
 
-COL_W = (35.25 - 2 * 0.5 - 2 * 0.3) / 3.0      # the poster chart's width, so both charts share one look
+COL_W = (35.25 - 2 * 0.5 - 2 * 0.3) / 3.0      # the poster chart's width, so every chart shares one look
 FIG_H = 5.0
 TICK, AXLBL, VALUE, LEGEND, ROWTITLE = 15, 16, 15, 16, 18
 RED, GREEN, BLUE, INK = "#EA4335", "#34A853", "#4285F4", "#202124"
 
-CATS = ["Object\nCount", "Absolute\nDistance", "Object\nSize", "Room\nSize",
-        "Relative\nDistance", "Relative\nDirection", "Route\nPlan", "Appearance\nOrder"]
-BASELINE = [52.0, 38.4, 63.2, 62.6, 62.0, 52.7, 48.0, 76.0]
-SPLIT    = [50.0, 54.2, 62.2, 54.6, 78.0, 87.3, 64.0, 72.0]
-SPLIT_GT = [93.4, 76.6, 91.2, 92.4, 88.0, 98.7, 70.0, 100.0]
-# macro check against the printed composites (unrounded rel. direction)
-_b = [52.0, 38.4, 63.2, 62.6, 62.0, (60 + 64 + 34) / 3, 48.0, 76.0]
-_s = [50.0, 54.2, 62.2, 54.6, 78.0, (94 + 88 + 80) / 3, 64.0, 72.0]
-_g = [93.4, 76.6, 91.2, 92.4, 88.0, (100 + 96 + 100) / 3, 70.0, 100.0]
-for name, v, ref in (("baseline", _b, 56.8583), ("SPLIT", _s, 65.2917), ("SPLIT + GT", _g, 88.7833)):
-    assert abs(sum(v) / 8 - ref) < 0.01, (name, sum(v) / 8, ref)
+BENCH = {
+    "vsib": dict(
+        title="VSIBench", out="vsib_category_bars.png",
+        cats=["Object\nCount", "Absolute\nDistance", "Object\nSize", "Room\nSize",
+              "Relative\nDistance", "Relative\nDirection", "Route\nPlan", "Appearance\nOrder"],
+        baseline=[52.0, 38.4, 63.2, 62.6, 62.0, 52.7, 48.0, 76.0],
+        split=[50.0, 54.2, 62.2, 54.6, 78.0, 87.3, 64.0, 72.0],
+        split_gt=[93.4, 76.6, 91.2, 92.4, 88.0, 98.7, 70.0, 100.0],
+        # macro check against the printed composites (unrounded relative direction)
+        check=(([52.0, 38.4, 63.2, 62.6, 62.0, (60 + 64 + 34) / 3, 48.0, 76.0], 56.8583),
+               ([50.0, 54.2, 62.2, 54.6, 78.0, (94 + 88 + 80) / 3, 64.0, 72.0], 65.2917),
+               ([93.4, 76.6, 91.2, 92.4, 88.0, (100 + 96 + 100) / 3, 70.0, 100.0], 88.7833)),
+    ),
+    "revsi": dict(
+        title="ReVSI", out="revsi_category_bars.png",
+        cats=["Object\nCount", "Absolute\nDistance", "Object\nSize", "Room\nSize",
+              "Relative\nDistance", "Relative\nDirection", "Route\nPlan"],
+        baseline=[64.6, 59.6, 76.8, 61.9, 67.0, 58.0, 58.5],
+        split=[58.8, 66.8, 64.2, 50.3, 84.2, 93.2, 82.9],
+        split_gt=[86.7, 98.2, 85.0, 79.7, 97.9, 98.3, 91.1],
+        check=(([64.6, 59.6, 76.8, 61.9, 67.0, 58.0, 58.5], 63.8),
+               ([58.8, 66.8, 64.2, 50.3, 84.2, 93.2, 82.9], 71.5),
+               ([86.7, 98.2, 85.0, 79.7, 97.9, 98.3, 91.1], 91.0)),
+    ),
+}
 
 
-def main():
+def main(key):
+    b = BENCH[key]
+    CATS, BASELINE, SPLIT, SPLIT_GT = b["cats"], b["baseline"], b["split"], b["split_gt"]
+    for vec, ref in b["check"]:
+        assert abs(sum(vec) / len(vec) - ref) < 0.06, (key, sum(vec) / len(vec), ref)
+    OUT = os.path.join(OUT_DIR, b["out"])
     x = np.arange(len(CATS))
     w = 0.28
     fig, ax = plt.subplots(figsize=(COL_W, FIG_H))
@@ -82,7 +106,7 @@ def main():
     note_y = leg_y0 - 0.025
     fig.text(0.535, note_y, "SPLIT (Ours) always uses Gemini 3.1 Pro as the planner VLM.", ha="center", va="top",
              fontsize=LEGEND - 1, style="italic", color=INK)
-    ax.set_title("VSIBench", fontsize=ROWTITLE, fontweight="bold", pad=24, color=INK)
+    ax.set_title(b["title"], fontsize=ROWTITLE, fontweight="bold", pad=24, color=INK)
     fig.subplots_adjust(left=0.075, right=0.995, top=note_y - 0.17, bottom=0.15)
     # lift the taller label only where two adjacent rendered labels overlap
     fig.canvas.draw()
@@ -99,11 +123,13 @@ def main():
                 bh, bl = hi.get_window_extent(rend), lo.get_window_extent(rend)
                 hi.set_y(hi.get_position()[1] + (bl.y1 + pad - bh.y0) * per_px)
                 n_lift += 1
-    print("vsib category chart: %d lifted labels" % n_lift)
+    print("%s category chart: %d lifted labels" % (key, n_lift))
     fig.savefig(OUT, dpi=300, facecolor="white")
     plt.close(fig)
     print("wrote", os.path.abspath(OUT))
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    for key in (sys.argv[1:] or list(BENCH)):
+        main(key)
