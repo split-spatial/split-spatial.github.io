@@ -72,3 +72,4 @@ def render_trim(pdf, out, pad=12, dpi=300, inset=3):
     im.crop((max(0, l - pad), max(0, t - pad),
              min(W, r + pad), min(H, b + pad))).save(out, optimize=True)
 ```
+| `static/images/vsib_category_bars.png` | built by `scripts/make_vsib_category_bars.py` (numbers and sources in its docstring) | `python scripts/make_vsib_category_bars.py` |
