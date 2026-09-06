@@ -304,6 +304,54 @@ table.crossbench .gain {
   margin-bottom: 2rem;
 }
 
+/* Panel title above each per-benchmark table. */
+.table-title {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #222;
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Per-benchmark tables carry many category columns, so they run tighter. */
+table.crossbench.wide {
+  font-size: 0.8rem;
+}
+
+table.crossbench.wide th,
+table.crossbench.wide td {
+  padding: 0.25rem 0.35rem;
+}
+
+/* Two-row headers: the toprule stays on top, the midrule on the bottom row,
+   and each column-group title gets its own rule. */
+table.crossbench.grouped thead tr:first-child th {
+  border-bottom: none;
+}
+
+table.crossbench.grouped thead tr:first-child th.group-head {
+  border-bottom: 1px solid #222;
+}
+
+table.crossbench.grouped thead tr:last-child th {
+  border-top: none;
+}
+
+table.crossbench tbody tr.delta-row td.method-col {
+  padding-left: 1.4rem;
+}
+
+table.crossbench .loss {
+  color: #b82121;
+  font-size: 0.8rem;
+}
+
+table.crossbench tbody tr.delta-row .gain,
+table.crossbench tbody tr.delta-row .loss {
+  font-size: inherit;
+}
+
 #BibTeX pre {
   background-color: #f5f5f5;
   overflow-x: auto;

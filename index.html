@@ -221,6 +221,130 @@
     <!-- CANDIDATE: benchmark chart; user decides keep or cut after preview -->
     <img src="static/images/benchmark_bars.png" alt="Bar chart of benchmark scores for the baseline VLM, SPLIT, and SPLIT with ground-truth measurements.">
     <p class="is-size-7 has-text-grey" style="margin-top: 0.5rem;">&dagger; SPLIT (Ours) + GT is measured on each benchmark's analysis subset; VSIBench and ReVSI counting are oracle ceilings.</p>
+
+    <p class="table-title">VSIBench</p>
+    <div class="table-wrap" style="overflow-x: auto;">
+      <table class="crossbench wide grouped">
+        <thead>
+          <tr>
+            <th class="method-col spacer"></th><th class="spacer"></th><th class="spacer"></th>
+            <th class="group-head" colspan="4">Numerical</th>
+            <th class="group-head" colspan="4">Multiple choice</th>
+          </tr>
+          <tr>
+            <th class="method-col">Method</th><th>Train</th><th>Avg.</th>
+            <th>Obj.<br>Count</th><th>Abs.<br>Dist.</th><th>Obj.<br>Size</th><th>Room<br>Size</th>
+            <th>Rel.<br>Dist.</th><th>Rel.<br>Dir.</th><th>Route<br>Plan</th><th>Appr.<br>Order</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="method-col">Human</td><td>&ndash;</td><td>79.2</td><td>94.3</td><td>47.0</td><td>60.4</td><td>45.9</td><td>94.7</td><td>95.8</td><td>95.8</td><td>100.0</td></tr>
+          <tr class="group-row"><td colspan="11"><em>General-purpose VLMs</em></td></tr>
+          <tr><td class="method-col">GPT-4o</td><td>TF</td><td>34.0</td><td>46.2</td><td>5.3</td><td>43.8</td><td>38.2</td><td>37.0</td><td>41.3</td><td>31.5</td><td>28.5</td></tr>
+          <tr><td class="method-col">Gemini-1.5 Pro</td><td>TF</td><td>45.4</td><td>56.2</td><td>30.9</td><td>64.1</td><td>43.6</td><td>51.3</td><td>46.3</td><td>36.0</td><td>34.6</td></tr>
+          <tr><td class="method-col">Gemini-2.5 Pro</td><td>TF</td><td>51.5</td><td>43.8</td><td>34.9</td><td>64.3</td><td>42.8</td><td>61.1</td><td>47.8</td><td>45.9</td><td>71.3</td></tr>
+          <tr class="group-row"><td colspan="11"><em>Supervised spatial specialists</em></td></tr>
+          <tr><td class="method-col">Think-with-Spatial-Code</td><td>RL</td><td>54.9</td><td>58.3</td><td>39.0</td><td>73.0</td><td>52.4</td><td>57.8</td><td>55.9</td><td>38.7</td><td>63.9</td></tr>
+          <tr class="delta-row"><td class="method-col">+ 2D box</td><td>RL</td><td>60.1</td><td><b>95.2</b></td><td>60.7</td><td>50.8</td><td>33.1</td><td><b>87.1</b></td><td>62.0</td><td>32.5</td><td>59.0</td></tr>
+          <tr><td class="method-col">VLM-3R-7B</td><td>SFT</td><td>60.9</td><td>70.2</td><td>49.4</td><td>69.2</td><td>67.1</td><td>65.4</td><td>80.5</td><td>45.4</td><td>40.1</td></tr>
+          <tr><td class="method-col">Cambrian-S-7B</td><td>SFT</td><td>67.5</td><td>73.2</td><td>50.5</td><td>74.9</td><td>72.2</td><td>71.1</td><td>76.2</td><td>41.8</td><td>80.1</td></tr>
+          <tr><td class="method-col">SpaceMind++ (InternVL3-8B)</td><td>SFT</td><td>73.4</td><td>74.5</td><td><u>62.4</u></td><td><b>77.9</b></td><td><u>76.9</u></td><td>73.5</td><td>89.7</td><td>48.2</td><td><u>84.1</u></td></tr>
+          <tr><td class="method-col">Cambrian-P (Qwen2.5-7B)</td><td>SFT</td><td><u>73.7</u></td><td><u>74.9</u></td><td>60.1</td><td><u>76.0</u></td><td><u>76.9</u></td><td><u>74.8</u></td><td>89.5</td><td>52.6</td><td><b>85.0</b></td></tr>
+          <tr><td class="method-col">SSR-3D (openPangu-VL-7B)</td><td>SFT</td><td><b>73.9</b></td><td>70.5</td><td><b>67.1</b></td><td><u>76.0</u></td><td><b>79.5</b></td><td>71.3</td><td><b>93.4</b></td><td>48.5</td><td><b>85.0</b></td></tr>
+          <tr class="group-row"><td colspan="11"><em>Training-free methods</em></td></tr>
+          <tr><td class="method-col">ViSRA (Qwen2.5-VL-7B)<sup>&dagger;</sup></td><td>TF</td><td>50.3</td><td>46.4</td><td>27.8</td><td>60.1</td><td>47.7</td><td>51.3</td><td>71.7</td><td>43.8</td><td>53.7</td></tr>
+          <tr><td class="method-col">TRACE (Gemini 3 Pro)</td><td>TF</td><td>57.8</td><td>47.6</td><td>38.8</td><td>73.9</td><td>45.6</td><td>63.9</td><td>61.7</td><td>58.0</td><td>73.0</td></tr>
+          <tr class="group-row"><td colspan="11"><em>Full benchmark</em></td></tr>
+          <tr><td class="method-col">Baseline VLM</td><td>TF</td><td>60.4</td><td>51.2</td><td>43.6</td><td>73.3</td><td>53.1</td><td>69.2</td><td>62.4</td><td><u>58.8</u></td><td>71.7</td></tr>
+          <tr class="ours-row"><td class="method-col"><b>SPLIT (Ours)</b></td><td>TF</td><td>66.9</td><td>50.0</td><td>58.3</td><td>66.1</td><td>56.3</td><td>69.9</td><td><u>90.0</u></td><td><b>73.7</b></td><td>70.7</td></tr>
+          <tr class="delta-row"><td class="method-col">&Delta;</td><td></td><td><span class="gain">+6.5</span></td><td><span class="loss">-1.2</span></td><td><span class="gain">+14.7</span></td><td><span class="loss">-7.2</span></td><td><span class="gain">+3.2</span></td><td><span class="gain">+0.7</span></td><td><span class="gain">+27.6</span></td><td><span class="gain">+15.0</span></td><td><span class="loss">-1.0</span></td></tr>
+          <tr class="group-row"><td colspan="11"><em>Debiased subset</em></td></tr>
+          <tr><td class="method-col">Baseline VLM</td><td>TF</td><td>57.5</td><td>46.4</td><td>41.2</td><td>62.9</td><td>54.6</td><td>69.0</td><td>62.3</td><td>51.8</td><td>71.7</td></tr>
+          <tr class="ours-row"><td class="method-col"><b>SPLIT (Ours)</b></td><td>TF</td><td>65.8</td><td>50.9</td><td>56.4</td><td>60.2</td><td>57.5</td><td>71.6</td><td>86.7</td><td>71.1</td><td>72.3</td></tr>
+          <tr class="delta-row"><td class="method-col">&Delta;</td><td></td><td><span class="gain">+8.3</span></td><td><span class="gain">+4.5</span></td><td><span class="gain">+15.2</span></td><td><span class="loss">-2.7</span></td><td><span class="gain">+2.8</span></td><td><span class="gain">+2.6</span></td><td><span class="gain">+24.4</span></td><td><span class="gain">+19.3</span></td><td><span class="gain">+0.6</span></td></tr>
+          <tr class="group-row"><td colspan="11"><em>Ground-truth diagnostic</em><sup>&ddagger;</sup></td></tr>
+          <tr><td class="method-col">SPLIT (Ours) + GT</td><td>TF</td><td>88.8</td><td>93.4</td><td>76.6</td><td>91.2</td><td>92.4</td><td>88.0</td><td>98.7</td><td>70.0</td><td>100.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">
+      Bold and underlining mark the best and second-best full-benchmark model scores.
+      &ldquo;TF&rdquo; is training-free, &ldquo;RL&rdquo; reinforcement learning, and
+      &ldquo;SFT&rdquo; supervised fine-tuning.
+      <sup>&dagger;</sup> Subset result reported by ViSRA.
+      <sup>&ddagger;</sup> Ground-truth diagnostic; the analysis subset is described in the paper,
+      counting is an oracle ceiling, and appearance order uses a fixed 50-question cohort shared by
+      every arm.
+    </p>
+
+    <p class="table-title">VSTIBench</p>
+    <div class="table-wrap" style="overflow-x: auto;">
+      <table class="crossbench wide">
+        <thead>
+          <tr>
+            <th class="method-col">Method</th><th>Train</th><th>Avg.</th>
+            <th>Cam-Obj<br>Abs (MRA)</th><th>Cam<br>Disp (MRA)</th><th>Cam Mov<br>Dir</th>
+            <th>Obj-Obj<br>Rel Pos</th><th>Cam-Obj<br>Rel Dist</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="group-row"><td colspan="8"><em>Published comparisons</em><sup>*</sup></td></tr>
+          <tr><td class="method-col">VLM-3R-7B</td><td>SFT</td><td>58.8</td><td>39.4</td><td>39.6</td><td>60.6</td><td>86.5</td><td>68.6</td></tr>
+          <tr><td class="method-col">GeoThinker-8B</td><td>SFT</td><td>67.4</td><td>38.4</td><td>45.8</td><td>84.2</td><td><u>93.6</u></td><td>75.2</td></tr>
+          <tr><td class="method-col">Cambrian-P</td><td>SFT</td><td><u>68.9</u></td><td>42.5</td><td><u>46.6</u></td><td><u>87.7</u></td><td><b>94.3</b></td><td>73.2</td></tr>
+          <tr class="rule-row"><td class="method-col">Baseline VLM</td><td>TF</td><td>57.7</td><td><u>49.0</u></td><td>18.5</td><td>45.3</td><td>93.5</td><td><u>82.0</u></td></tr>
+          <tr class="ours-row"><td class="method-col"><b>SPLIT (Ours)</b></td><td>TF</td><td><b>78.3</b></td><td><b>58.2</b></td><td><b>60.2</b></td><td><b>96.7</b></td><td>90.4</td><td><b>85.7</b></td></tr>
+          <tr class="delta-row"><td class="method-col">&Delta;</td><td></td><td><span class="gain">+20.6</span></td><td><span class="gain">+9.3</span></td><td><span class="gain">+41.7</span></td><td><span class="gain">+51.4</span></td><td><span class="loss">-3.2</span></td><td><span class="gain">+3.7</span></td></tr>
+          <tr class="group-row"><td colspan="8"><em>Ground-truth diagnostic</em><sup>&dagger;</sup></td></tr>
+          <tr><td class="method-col">Baseline VLM</td><td>TF</td><td>59.0</td><td>55.0</td><td>20.6</td><td>44.0</td><td>98.7</td><td>76.7</td></tr>
+          <tr class="ours-row"><td class="method-col"><b>SPLIT (Ours)</b></td><td>TF</td><td>79.7</td><td>63.8</td><td>56.2</td><td>96.0</td><td>97.3</td><td>85.3</td></tr>
+          <tr><td class="method-col">SPLIT (Ours) + GT</td><td>TF</td><td>96.7</td><td>89.8</td><td>97.6</td><td>98.0</td><td>100.0</td><td>98.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">
+      Bold and underlining mark the best and second-best full-benchmark scores.
+      <sup>*</sup> Published comparison rows use original-release labels. We identified a
+      camera-center bug in camera displacement, camera&ndash;object distance (absolute and relative)
+      labels and notified the VSTIBench authors; they have corrected the release,
+      <a href="https://huggingface.co/datasets/Journey9ni/vstibench">public erratum</a>.
+      Our rows use the corrected release labels.
+      <sup>&dagger;</sup> Ground-truth diagnostic; the analysis subset is described in the paper.
+    </p>
+
+    <p class="table-title">ReVSI</p>
+    <div class="table-wrap" style="overflow-x: auto;">
+      <table class="crossbench wide grouped">
+        <thead>
+          <tr>
+            <th class="method-col spacer"></th><th class="spacer"></th><th class="spacer"></th>
+            <th class="spacer"></th>
+            <th class="group-head" colspan="4">Numerical</th>
+            <th class="group-head" colspan="3">Multiple choice</th>
+          </tr>
+          <tr>
+            <th class="method-col">Method</th><th>Train</th><th>Frames</th><th>Avg.</th>
+            <th>Obj.<br>Count</th><th>Abs.<br>Dist.</th><th>Obj.<br>Size</th><th>Room<br>Size</th>
+            <th>Rel.<br>Dist.</th><th>Rel.<br>Dir.</th><th>Route<br>Plan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="method-col">GPT-5.2</td><td>TF</td><td>64</td><td>50.9</td><td>56.2</td><td>41.5</td><td><u>73.9</u></td><td><b>63.0</b></td><td>48.4</td><td>34.9</td><td>38.2</td></tr>
+          <tr><td class="method-col">InternVL3.5-38B</td><td>TF</td><td>64</td><td>54.1</td><td>43.8</td><td><u>60.6</u></td><td>70.2</td><td>58.4</td><td>57.4</td><td>45.9</td><td>42.7</td></tr>
+          <tr><td class="method-col">VLM-3R-7B</td><td>SFT</td><td>32</td><td>50.1</td><td>41.6</td><td>61.6</td><td>64.8</td><td>52.5</td><td>46.5</td><td>49.5</td><td>34.1</td></tr>
+          <tr class="rule-row"><td class="method-col">Baseline VLM</td><td>TF</td><td>32</td><td><u>63.8</u></td><td><b>64.6</b></td><td>59.6</td><td><b>76.8</b></td><td><u>61.9</u></td><td><u>67.0</u></td><td><u>58.0</u></td><td><u>58.5</u></td></tr>
+          <tr class="ours-row"><td class="method-col"><b>SPLIT (Ours)</b></td><td>TF</td><td>32</td><td><b>71.5</b></td><td><u>58.8</u></td><td><b>66.8</b></td><td>64.2</td><td>50.3</td><td><b>84.2</b></td><td><b>93.2</b></td><td><b>82.9</b></td></tr>
+          <tr class="delta-row"><td class="method-col">&Delta;</td><td></td><td></td><td><span class="gain">+7.7</span></td><td><span class="loss">-5.8</span></td><td><span class="gain">+7.2</span></td><td><span class="loss">-12.5</span></td><td><span class="loss">-11.6</span></td><td><span class="gain">+17.2</span></td><td><span class="gain">+35.3</span></td><td><span class="gain">+24.4</span></td></tr>
+          <tr class="group-row"><td colspan="11"><em>Ground-truth diagnostic</em><sup>&dagger;</sup></td></tr>
+          <tr><td class="method-col">SPLIT (Ours) + GT</td><td>TF</td><td>32</td><td>91.0</td><td>86.7</td><td>98.2</td><td>85.0</td><td>79.7</td><td>97.9</td><td>98.3</td><td>91.1</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">
+      Bold and underlining mark the best and second-best full-benchmark scores.
+      <sup>&dagger;</sup> Ground-truth diagnostic; the analysis subset is described in the paper,
+      and counting is an oracle ceiling.
+    </p>
   </div>
 </section>
 
