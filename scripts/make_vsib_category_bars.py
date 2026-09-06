@@ -30,6 +30,7 @@ plt.rcParams["axes.unicode_minus"] = False
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "static", "images", "vsib_category_bars.png")
+GT_MARK = os.environ.get("CHART_GT_MARK", "†")   # dagger on the GT legend entry, footnoted on the page
 
 COL_W = (35.25 - 2 * 0.5 - 2 * 0.3) / 3.0      # the poster chart's width, so both charts share one look
 FIG_H = 5.0
@@ -53,7 +54,7 @@ def main():
     x = np.arange(len(CATS))
     w = 0.28
     fig, ax = plt.subplots(figsize=(COL_W, FIG_H))
-    series = [("Baseline (Gemini 3.1 Pro)", BASELINE, RED), ("SPLIT (Ours)", SPLIT, GREEN), ("SPLIT (Ours) + GT", SPLIT_GT, BLUE)]
+    series = [("Baseline (Gemini 3.1 Pro)", BASELINE, RED), ("SPLIT (Ours)", SPLIT, GREEN), ("SPLIT (Ours) + GT" + GT_MARK, SPLIT_GT, BLUE)]
     values = [BASELINE, SPLIT, SPLIT_GT]
     labels = {}
     for i, (label, vals, color) in enumerate(series):

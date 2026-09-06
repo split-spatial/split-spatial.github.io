@@ -37,8 +37,8 @@ The re-encode keeps the source geometry and timing: 1920x1080, 30 fps, 73.80 s.
 | `static/images/sample_question.png` | `/home/jjyeung/agent-project-paper/figure_kit/fig1_teaser/req83_776/variant_d_onerow/fig1_teaser_variant_d_editable_avg_v15.pptx` | python-pptx deletes shape ids 2, 3, 17 and every shape whose left edge is at or beyond 185 mm, and clears the outline on the `white_background` rectangle; then `LO_PROFILE=... soffice.sh --convert-to pdf`, then the 300 dpi render-and-trim recipe |
 | `static/images/pipeline.png` | `/home/jjyeung/agent-project-paper/figures/fig_pipeline.pdf` | 300 dpi render-and-trim recipe |
 | `static/images/walkthrough.png` | `/home/jjyeung/agent-project-paper/figure_kit/fig1_hero_trace/variant_b_q1851/hero_figure_filled_v16_user_5frames.pdf` | 300 dpi render-and-trim recipe |
-| `static/images/benchmark_bars.png` | `/home/jjyeung/agent-project-paper/figure_kit/poster_eccv/assets/benchmark_bars.png` | `cp` (placeholder: a newer render replaces it under the same name) |
-| `static/images/vsti_category_bars.png` | `/home/jjyeung/agent-project-paper/figure_kit/poster_eccv/assets/vsti_category_bars.png` | `cp` (placeholder: a newer render replaces it under the same name) |
+| `static/images/benchmark_bars.png` | poster kit `make_benchmark_bars.py` run by `scripts/make_site_charts.sh` (dagger on the GT legend entry) | `bash scripts/make_site_charts.sh` |
+| `static/images/vsti_category_bars.png` | poster kit `make_category_bars.py` run by `scripts/make_site_charts.sh` (dagger on the GT legend entry) | `bash scripts/make_site_charts.sh` |
 
 `sample_question.png` shows panel (a) of the paper teaser figure. Deleting the shapes listed
 above removes the panel (b) column and the two panel captions.
@@ -72,4 +72,4 @@ def render_trim(pdf, out, pad=12, dpi=300, inset=3):
     im.crop((max(0, l - pad), max(0, t - pad),
              min(W, r + pad), min(H, b + pad))).save(out, optimize=True)
 ```
-| `static/images/vsib_category_bars.png` | built by `scripts/make_vsib_category_bars.py` (numbers and sources in its docstring) | `python scripts/make_vsib_category_bars.py` |
+| `static/images/vsib_category_bars.png` | `scripts/make_vsib_category_bars.py` (numbers and sources in its docstring; dagger on the GT legend entry) | `bash scripts/make_site_charts.sh` |
