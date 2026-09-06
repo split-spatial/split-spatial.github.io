@@ -19,7 +19,7 @@ the raster by 3 px so the page-edge antialiasing does not defeat the bounding bo
 | File | Source | Command |
 | --- | --- | --- |
 | `static/paper.pdf` | `/home/jjyeung/agent-project-paper/eccv_main.pdf` | `cp` (verified that page 1 carries no release sentence) |
-| `static/poster.pdf` | `/home/jjyeung/agent-project-paper/figure_kit/poster_eccv/poster_eccv_v14.pdf` | `cp` |
+| `static/poster.pdf` | `/home/jjyeung/agent-project-paper/figure_kit/poster_eccv/poster_eccv_v15.pdf` | `cp` |
 
 ## Video and poster frame
 
