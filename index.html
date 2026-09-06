@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SPLIT is a training-free harness that reconstructs one metric 3-D point cloud from a video and gives a planner VLM tools to query it.">
+  <meta name="keywords" content="SPLIT, video spatial understanding, spatial reasoning, VSIBench, VSTIBench, ReVSI">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPLIT: Perception, Not Reasoning, Limits Video Spatial Understanding</title>
+
+  <meta property="og:title" content="SPLIT: Perception, Not Reasoning, Limits Video Spatial Understanding">
+  <meta property="og:description"
+        content="Wearable AI assistants must track objects across egocentric video to help users in physical spaces. Current vision-language models (VLMs) struggle with spatial questions that require combining observations from different moments.">
+  <meta property="og:image" content="https://split-spatial.github.io/static/images/teaser_still.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SPLIT: Perception, Not Reasoning, Limits Video Spatial Understanding">
+  <meta name="twitter:image" content="https://split-spatial.github.io/static/images/teaser_still.jpg">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Perception, Not Reasoning, Limits Video Spatial Understanding</h1>
+          <h2 class="publication-subtitle">SPLIT: Separating Perception from LLM Inference with Tools</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jacobyeung.org">Jacob Yeung</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://mohit1997.github.io/">Mohit Goyal</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/fdubost">Florian Dubost</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/garyvondran">Gary L. Vondran Jr.</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://federicotombari.github.io/">Federico Tombari</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.cs.cmu.edu/~deva/">Deva Ramanan</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://sites.google.com/andrew.cmu.edu/tarrlab/people/michael-j-tarr">Michael J. Tarr</a><sup>1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Carnegie Mellon University</span>
+            <span class="author-block"><sup>2</sup>Google</span>
+            <span class="author-block"><sup>3</sup>Unity</span>
+          </div>
+
+          <div class="is-size-6 publication-correspondence">
+            Correspondence: <a href="mailto:jacobyeung@cmu.edu">jacobyeung@cmu.edu</a>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="static/paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="static/poster.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-image"></i>
+                  </span>
+                  <span>Poster</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline controls poster="static/images/teaser_still.jpg" width="100%">
+        <source src="static/videos/teaser.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="band band-blue">Abstract</div>
+    <div class="content has-text-justified">
+      <p>
+        Wearable AI assistants must track objects across egocentric video to help users in physical
+        spaces. Current vision-language models (VLMs) struggle with spatial questions that require
+        combining observations from different moments. An overall score does not reveal whether their
+        errors come from perceiving the scene or reasoning about it. We introduce SPLIT, a
+        training-free harness that reconstructs one metric 3-D point cloud from a video and gives a
+        planner VLM tools to query it. Frozen reconstruction and grounding models locate objects and
+        measure their geometry, and the planner VLM combines those measurements using Python. We train
+        no model parameters on the evaluated benchmarks. SPLIT improves accuracy on VSIBench,
+        VSTIBench, and ReVSI. On VSTIBench, it raises accuracy from 57.7% to 78.3%, eliminating 49% of
+        the baseline VLM's errors; across all three benchmarks, the largest gains occur when questions
+        relate objects seen in different frames. SPLIT achieves the best published training-free score
+        on VSIBench and exceeds published scores on VSTIBench and ReVSI. To measure how much error
+        comes from perception, we rerun SPLIT with ground-truth measurements in place of the tools'
+        estimates. On the VSTIBench analysis subset, the baseline VLM scores 59.0%, SPLIT scores
+        79.7%, and SPLIT + GT reaches 96.7%. This gain shows that inaccurate perception remains a
+        major source of error.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="band band-blue">Our Contributions</div>
+    <div class="content">
+      <ol class="contribution-list">
+        <li>SPLIT is a harness that reconstructs a metric 3-D point cloud per video and gives a
+          planner VLM perception tools to query it. SPLIT achieves the best training-free score on
+          VSIBench and the best published score on VSTIBench and ReVSI.</li>
+        <li>Replacing the tools&rsquo; estimates with ground-truth measurements lifts SPLIT from
+          66.9 / 78.3 / 71.5 to 88.8 / 96.7 / 91.0 on VSIBench, VSTIBench, and ReVSI. Perception,
+          not reasoning, limits current VLMs.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="band band-blue">Sample Question</div>
+    <img src="static/images/sample_question.png" alt="A sample spatial question with the baseline answer and the SPLIT answer.">
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="band band-blue">Pipeline</div>
+    <img src="static/images/pipeline.png" alt="The SPLIT pipeline: reconstruction and grounding models build a metric point cloud that the planner VLM queries with tools.">
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="band band-red">Walkthrough of a Question</div>
+    <img src="static/images/walkthrough.png" alt="A step-by-step trace of SPLIT answering one question.">
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="band band-green">SPLIT Improves Video Spatial Reasoning</div>
+    <div class="table-wrap" style="overflow-x: auto;">
+      <table class="crossbench">
+        <thead>
+          <tr>
+            <th class="method-col">Method</th>
+            <th>VSIBench</th>
+            <th>VSTIBench</th>
+            <th>ReVSI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="group-row"><td colspan="4"><em>Proprietary</em></td></tr>
+          <tr><td class="method-col">GPT-4o</td><td>34.0</td><td>38.2</td><td>&ndash;</td></tr>
+          <tr><td class="method-col">Gemini-2.5 Pro</td><td>51.5</td><td>42.4</td><td>&ndash;</td></tr>
+          <tr><td class="method-col">GPT-5.2</td><td>49.2</td><td>&ndash;</td><td>50.9</td></tr>
+          <tr><td class="method-col">Gemini 3 Flash</td><td>55.9</td><td>&ndash;</td><td>57.6</td></tr>
+          <tr><td class="method-col">Gemini 3 Pro</td><td>60.5</td><td>&ndash;</td><td>60.9</td></tr>
+
+          <tr class="group-row"><td colspan="4"><em>Open-source</em></td></tr>
+          <tr><td class="method-col">Qwen3-VL-8B</td><td>57.4</td><td>&ndash;</td><td>49.1</td></tr>
+          <tr><td class="method-col">InternVL3.5-38B</td><td>60.8</td><td>&ndash;</td><td>54.1</td></tr>
+          <tr><td class="method-col">LLaVA-Video-72B</td><td>39.7</td><td>44.0</td><td>37.8</td></tr>
+
+          <tr class="group-row"><td colspan="4"><em>Supervised spatial specialists</em></td></tr>
+          <tr><td class="method-col">VLM-3R-7B</td><td>60.9</td><td>58.8</td><td>50.1</td></tr>
+          <tr><td class="method-col">Cambrian-S-7B</td><td>67.5</td><td>&ndash;</td><td>49.1</td></tr>
+          <tr><td class="method-col">GeoThinker-8B</td><td>72.6</td><td>67.4</td><td>&ndash;</td></tr>
+          <tr><td class="method-col">Cambrian-P</td><td><u>73.7</u></td><td><u>68.9</u></td><td>&ndash;</td></tr>
+          <tr><td class="method-col">SSR-3D</td><td><b>73.9</b></td><td>44.8</td><td>&ndash;</td></tr>
+
+          <tr class="rule-row"><td class="method-col">Baseline VLM (Gemini 3.1 Pro)</td><td>60.4</td><td>57.7</td><td><u>63.8</u></td></tr>
+          <tr class="ours-row"><td class="method-col"><b>SPLIT w/ Gemini 3.1 Pro (Ours)</b></td>
+            <td>66.9 <span class="gain">(+6.5)</span></td>
+            <td><b>78.3</b> <span class="gain">(+20.6)</span></td>
+            <td><b>71.5</b> <span class="gain">(+7.7)</span></td></tr>
+          <tr><td class="method-col">SPLIT (Ours) + GT</td><td>88.8<sup>&dagger;</sup></td><td>96.7<sup>&dagger;</sup></td><td>91.0<sup>&dagger;</sup></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">
+      Bold and underlining mark the best and second-best full-benchmark scores.
+      <sup>&dagger;</sup> Ground-truth cells use the corresponding analysis subsets; VSIBench and
+      ReVSI counting are oracle ceilings.
+    </p>
+
+    <!-- CANDIDATE: benchmark chart; user decides keep or cut after preview -->
+    <img src="static/images/benchmark_bars.png" alt="Bar chart of benchmark scores for the baseline VLM, SPLIT, and SPLIT with ground-truth measurements.">
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="band band-green">Ground Truth Closes the Gap in Every Category</div>
+    <img src="static/images/vsti_category_bars.png" alt="Per-category VSTIBench scores for the baseline VLM, SPLIT, and SPLIT with ground-truth measurements.">
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="band band-green">Conclusion</div>
+    <div class="content">
+      <p>
+        With ground-truth measurements in place of the tools&rsquo; estimates, SPLIT rises from 78.3
+        to 96.7 on VSTIBench: perception, not reasoning, is the bottleneck.
+      </p>
+      <p>
+        SPLIT improves VSIBench, VSTIBench, and ReVSI by 6.5, 20.6, and 7.7 points over the same
+        planner VLM without tools.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{yeung2026split,
+  title  = {Perception, Not Reasoning, Limits Video Spatial Understanding},
+  author = {Yeung, Jacob and Goyal, Mohit and Dubost, Florian and Vondran Jr., Gary L. and Tombari, Federico and Ramanan, Deva and Tarr, Michael J.},
+  year   = {2026}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="static/paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website adapts the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies
+            template</a>. You are free to borrow its source code, and we ask that you link back to
+            the Nerfies page in your footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

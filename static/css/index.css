@@ -1,0 +1,311 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-title {
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors {
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {
+}
+
+.publication-authors {
+  /*color: #4286f4;*/
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-body img {
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.interpolation-panel .interpolation-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interpolation-video-column {
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+#interpolation-image-wrapper {
+  width: 100%;
+}
+#interpolation-image-wrapper img {
+  border-radius: 5px;
+}
+
+
+/* ---------------------------------------------------------------------------
+   SPLIT project page
+   --------------------------------------------------------------------------- */
+
+:root {
+  --google-blue: #4285F4;
+  --google-red: #EA4335;
+  --google-green: #34A853;
+}
+
+.publication-title {
+  margin-bottom: 0.4rem !important;
+}
+
+.publication-subtitle {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 300;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.publication-correspondence {
+  margin-top: 0.75rem;
+}
+
+.publication-authors a,
+.publication-correspondence a,
+.content a,
+.table-note a,
+.footer a {
+  color: var(--google-blue) !important;
+}
+
+.publication-authors a:hover,
+.publication-correspondence a:hover,
+.content a:hover,
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.hero .author-block {
+  margin-right: 0.35rem;
+}
+
+/* Colored section header bands, poster style: square corners, full content width. */
+.band {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #fff;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  border-radius: 0;
+  margin-bottom: 1.75rem;
+  width: 100%;
+}
+
+.band-blue  { background-color: var(--google-blue); }
+.band-red   { background-color: var(--google-red); }
+.band-green { background-color: var(--google-green); }
+
+.section {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.section img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.contribution-list {
+  margin-left: 1.25rem;
+}
+
+.contribution-list li {
+  margin-bottom: 0.75rem;
+}
+
+/* Cross-benchmark results table. */
+.table-wrap {
+  overflow-x: auto;
+  margin-bottom: 0.75rem;
+}
+
+table.crossbench {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+table.crossbench th,
+table.crossbench td {
+  padding: 0.3rem 0.6rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+table.crossbench th.method-col,
+table.crossbench td.method-col {
+  text-align: left;
+}
+
+table.crossbench thead th {
+  font-family: 'Google Sans', sans-serif;
+  border-top: 2px solid #222;
+  border-bottom: 1px solid #222;
+}
+
+table.crossbench tbody tr.group-row td {
+  text-align: left;
+  padding-top: 0.6rem;
+  border-top: 1px solid #ccc;
+  color: #555;
+}
+
+table.crossbench tbody tr:first-child.group-row td {
+  border-top: none;
+}
+
+table.crossbench tbody tr.rule-row td {
+  border-top: 1px solid #222;
+  padding-top: 0.5rem;
+}
+
+table.crossbench tbody tr.ours-row {
+  background-color: #f2f2f2;
+}
+
+table.crossbench tbody tr:last-child td {
+  border-bottom: 2px solid #222;
+}
+
+table.crossbench .gain {
+  color: #1f731f;
+  font-size: 0.8rem;
+}
+
+.table-note {
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+#BibTeX pre {
+  background-color: #f5f5f5;
+  overflow-x: auto;
+  white-space: pre;
+}
