@@ -39,6 +39,7 @@ The re-encode keeps the source geometry and timing: 1920x1080, 30 fps, 73.80 s.
 | `static/images/walkthrough.png` | `/home/jjyeung/agent-project-paper/figure_kit/fig1_hero_trace/variant_b_q1851/hero_figure_filled_v16_user_5frames.pdf` | 300 dpi render-and-trim recipe |
 | `static/images/benchmark_bars.png` | poster kit `make_benchmark_bars.py` run by `scripts/make_site_charts.sh` (dagger on the GT legend entry) | `bash scripts/make_site_charts.sh` |
 | `static/images/vsti_category_bars.png` | poster kit `make_category_bars.py` run by `scripts/make_site_charts.sh` (dagger on the GT legend entry) | `bash scripts/make_site_charts.sh` |
+| `static/images/og_card.png` | `scripts/make_og_card.py`: the `og:image` / `twitter:image` link-preview card (Google Sans, poster palette, the Table 1 headline pair per benchmark); fonts cached at `/data2/jjyeung/tools/fonts/google_sans/`, download command in the script docstring | `python scripts/make_og_card.py` |
 
 `sample_question.png` shows panel (a) of the paper teaser figure. Deleting the shapes listed
 above removes the panel (b) column and the two panel captions.
