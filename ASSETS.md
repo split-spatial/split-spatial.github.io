@@ -36,7 +36,7 @@ The re-encode keeps the source geometry and timing: 1920x1080, 30 fps, 73.80 s.
 | --- | --- | --- |
 | `static/images/sample_question.png` | `/home/jjyeung/agent-project-paper/figure_kit/fig1_teaser/req83_776/variant_d_onerow/fig1_teaser_variant_d_editable_avg_v15.pptx` | python-pptx deletes shape ids 2, 3, 17 and every shape whose left edge is at or beyond 185 mm, and clears the outline on the `white_background` rectangle; then `LO_PROFILE=... soffice.sh --convert-to pdf`, then the 300 dpi render-and-trim recipe |
 | `static/images/pipeline.png` | `/home/jjyeung/agent-project-paper/figures/fig_pipeline.pdf` | 300 dpi render-and-trim recipe |
-| `static/images/walkthrough.png` | `/home/jjyeung/agent-project-paper/figure_kit/fig1_hero_trace/variant_b_q1851/hero_figure_filled_v16_user_5frames.pdf` | 300 dpi render-and-trim recipe |
+| `static/images/walkthrough.png` | `/home/jjyeung/agent-project-paper/figure_kit/fig1_hero_trace/variant_b_q1851/hero_figure_filled_v18_heater_slot23_bbox.pdf` | 300 dpi render-and-trim recipe |
 | `static/images/benchmark_bars.png` | poster kit `make_benchmark_bars.py` run by `scripts/make_site_charts.sh` (dagger on the GT legend entry) | `bash scripts/make_site_charts.sh` |
 | `static/images/vsti_category_bars.png` | poster kit `make_category_bars.py` run by `scripts/make_site_charts.sh` (dagger on the GT legend entry) | `bash scripts/make_site_charts.sh` |
 | `static/images/og_card.png` | `scripts/make_og_card.py`: the `og:image` / `twitter:image` link-preview card (Google Sans, poster palette, the Table 1 headline pair per benchmark); fonts cached at `/data2/jjyeung/tools/fonts/google_sans/`, download command in the script docstring | `python scripts/make_og_card.py` |
