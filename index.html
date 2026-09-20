@@ -125,7 +125,7 @@
         on VSIBench and exceeds published scores on VSTIBench and ReVSI. To measure how much error
         comes from perception, we rerun SPLIT with ground-truth measurements in place of the tools'
         estimates. On the VSTIBench analysis subset, the baseline VLM scores 59.0%, SPLIT scores
-        79.7%, and SPLIT + GT reaches 96.7%. This gain shows that inaccurate perception remains a
+        79.7%, and SPLIT + GT reaches 95.7%. This gain shows that inaccurate perception remains a
         major source of error.
       </p>
     </div>
@@ -142,7 +142,7 @@
           planner VLM perception tools to query it. SPLIT achieves the best training-free score on
           VSIBench and the best published score on VSTIBench and ReVSI.</li>
         <li>Replacing the tools&rsquo; estimates with ground-truth measurements lifts SPLIT from
-          66.9 / 78.3 / 71.5 to 91.6 / 96.7 / 91.0 on VSIBench, VSTIBench, and ReVSI. Perception,
+          66.9 / 78.3 / 71.5 to 91.8 / 95.7 / 91.0 on VSIBench, VSTIBench, and ReVSI. Perception,
           not reasoning, limits current VLMs.</li>
       </ol>
     </div>
@@ -212,7 +212,7 @@
             <td>66.9 <span class="gain">(+6.5)</span></td>
             <td><b>78.3</b> <span class="gain">(+20.6)</span></td>
             <td><b>71.5</b> <span class="gain">(+7.7)</span></td></tr>
-          <tr><td class="method-col">SPLIT (Ours) + GT</td><td>91.6<sup>&dagger;</sup></td><td>96.7<sup>&dagger;</sup></td><td>91.0<sup>&dagger;</sup></td></tr>
+          <tr><td class="method-col">SPLIT (Ours) + GT</td><td>91.8<sup>&dagger;</sup></td><td>95.7<sup>&dagger;</sup></td><td>91.0<sup>&dagger;</sup></td></tr>
         </tbody>
       </table>
     </div>
@@ -266,7 +266,7 @@
           <tr class="ours-row"><td class="method-col"><b>SPLIT (Ours)</b></td><td>TF</td><td>65.8</td><td>50.9</td><td>56.4</td><td>60.2</td><td>57.5</td><td>71.6</td><td>86.7</td><td>71.1</td><td>72.3</td></tr>
           <tr class="delta-row"><td class="method-col">&Delta;</td><td></td><td><span class="gain">+8.3</span></td><td><span class="gain">+4.5</span></td><td><span class="gain">+15.2</span></td><td><span class="loss">-2.7</span></td><td><span class="gain">+2.8</span></td><td><span class="gain">+2.6</span></td><td><span class="gain">+24.4</span></td><td><span class="gain">+19.3</span></td><td><span class="gain">+0.6</span></td></tr>
           <tr class="group-row"><td colspan="11"><em>Ground-truth diagnostic</em><sup>&ddagger;</sup></td></tr>
-          <tr><td class="method-col">SPLIT (Ours) + GT</td><td>TF</td><td>91.6</td><td>95.4</td><td>92.4</td><td>97.0</td><td>92.4</td><td>94.0</td><td>99.3</td><td>62.0</td><td>100.0</td></tr>
+          <tr><td class="method-col">SPLIT (Ours) + GT</td><td>TF</td><td>91.8</td><td>95.4</td><td>92.4</td><td>97.0</td><td>92.4</td><td>94.0</td><td>99.3</td><td>64.0</td><td>100.0</td></tr>
         </tbody>
       </table>
     </div>
@@ -301,7 +301,7 @@
           <tr class="group-row"><td colspan="8"><em>Ground-truth diagnostic</em><sup>&dagger;</sup></td></tr>
           <tr><td class="method-col">Baseline VLM</td><td>TF</td><td>59.0</td><td>55.0</td><td>20.6</td><td>44.0</td><td>98.7</td><td>76.7</td></tr>
           <tr class="ours-row"><td class="method-col"><b>SPLIT (Ours)</b></td><td>TF</td><td>79.7</td><td>63.8</td><td>56.2</td><td>96.0</td><td>97.3</td><td>85.3</td></tr>
-          <tr><td class="method-col">SPLIT (Ours) + GT</td><td>TF</td><td>96.7</td><td>89.8</td><td>97.6</td><td>98.0</td><td>100.0</td><td>98.0</td></tr>
+          <tr><td class="method-col">SPLIT (Ours) + GT</td><td>TF</td><td>95.7</td><td>87.8</td><td>97.6</td><td>98.0</td><td>98.0</td><td>97.3</td></tr>
         </tbody>
       </table>
     </div>
@@ -369,7 +369,7 @@
     <div class="content">
       <p>
         With ground-truth measurements in place of the tools&rsquo; estimates, SPLIT rises from 78.3
-        to 96.7 on VSTIBench: perception, not reasoning, is the bottleneck.
+        to 95.7 on VSTIBench: perception, not reasoning, is the bottleneck.
       </p>
       <p>
         SPLIT improves VSIBench, VSTIBench, and ReVSI by 6.5, 20.6, and 7.7 points over the same

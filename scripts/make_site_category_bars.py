@@ -9,8 +9,9 @@ the planner note under it, a centered panel title, value labels on every bar.
 
 Numbers: the VSIBench analysis subset (exact-500 cohort with the 50-question answerable
 appearance cohort, USER sanction 2026-08-24), the same cohort behind the paper's 88.8 cell.
-  - SPLIT + GT per category: paper Table 2 ground-truth diagnostic row (source
-    REPLACEMENT487_CELLS_COMPLETE.json + R930 route 35/50 + REQ155 appearance 50/50).
+  - SPLIT + GT per category: paper Table 2 ground-truth diagnostic row, score-index role
+    exact500_gt_r1339_cyfix_88p32 with the appearance cell from the screen-ii cohort
+    (bank req235_composite_cyfix_topup7_20260920T1208Z) -> composite 91.8.
   - Baseline / SPLIT per category: R899_BASELINE_TOPUP_RESULT.md and R914_SPLIT_TOPUP_RESULT.md
     (487-cohort tables; every non-route category has all 50 members), with route from
     R930_EXACT500_CELLS.json (24/50, 32/50) and appearance from the screen-ii cohort in
@@ -49,11 +50,11 @@ BENCH = {
               "Relative\nDistance", "Relative\nDirection", "Route\nPlan", "Appearance\nOrder"],
         baseline=[52.0, 38.4, 63.2, 62.6, 62.0, 52.7, 48.0, 76.0],
         split=[50.0, 54.2, 62.2, 54.6, 78.0, 87.3, 64.0, 72.0],
-        split_gt=[95.4, 92.4, 97.0, 92.4, 94.0, 99.3, 62.0, 100.0],
+        split_gt=[95.4, 92.4, 97.0, 92.4, 94.0, 99.3, 64.0, 100.0],
         # macro check against the printed composites (unrounded relative direction)
         check=(([52.0, 38.4, 63.2, 62.6, 62.0, (60 + 64 + 34) / 3, 48.0, 76.0], 56.8583),
                ([50.0, 54.2, 62.2, 54.6, 78.0, (94 + 88 + 80) / 3, 64.0, 72.0], 65.2917),
-               ([95.4, 92.4, 97.0, 92.4, 94.0, 99.3, 62.0, 100.0], 91.6000)),
+               ([95.4, 92.4, 97.0, 92.4, 94.0, 99.3, 64.0, 100.0], 91.8125)),
     ),
     "revsi": dict(
         title="ReVSI", out="revsi_category_bars.png",
